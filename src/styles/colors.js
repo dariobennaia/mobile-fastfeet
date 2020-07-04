@@ -6,7 +6,7 @@ export default {
 
   primary: '#7D40E7',
   secondary: '#A28FD0',
-  ternary: '#7D40E71A',
+  ternary: '#F8F9FD',
 
   border: '#0000001A',
   success: '#82BF18',

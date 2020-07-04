@@ -16,7 +16,7 @@ export function* updateProfile({ payload }) {
     };
 
     yield delay(1000);
-    const response = yield call(api.put, 'user', profile);
+    const response = yield call(api.put, 'deliveryman', profile);
     Alert.alert('Sucesso!', 'Perfil atualizado com sucesso!');
 
     yield put(updateProfileSuccess(response.data));
@@ -29,4 +29,6 @@ export function* updateProfile({ payload }) {
   }
 }
 
-export default all([takeLatest('@user/UPDATE_PROFILE_REQUEST', updateProfile)]);
+export default all([
+  takeLatest('@deliveryman/UPDATE_PROFILE_REQUEST', updateProfile),
+]);

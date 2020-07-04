@@ -11,9 +11,10 @@ import colors from '~/styles/colors';
  * Paginas da aplicação
  */
 import SignIn from '~/pages/SignIn';
+import Deliveries from '~/pages/Deliveries';
 
 const stackRoutes = [{ name: 'SignIn', component: SignIn }];
-const tabRoutes = [];
+const tabRoutes = [{ name: 'Deliveries', component: Deliveries }];
 
 /**
  * Configurações globais das tabs navigations.
@@ -21,10 +22,10 @@ const tabRoutes = [];
 const globalOptionsTab = {
   unmountOnBlur: true,
   keyboardHidesTabBar: true,
-  activeTintColor: colors.white,
-  inactiveTintColor: colors.regular,
+  activeTintColor: colors.primary,
+  inactiveTintColor: colors.regularLight,
   style: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.background,
     borderTopWidth: 0,
   },
 };
@@ -35,7 +36,7 @@ const Tab = createBottomTabNavigator();
 export function AppRoutes() {
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
+      <StatusBar barStyle="light-content" backgroundColor={colors.background} />
       <NavigationContainer>
         <Tab.Navigator tabBarOptions={globalOptionsTab}>
           {tabRoutes.map(({ name, component }) => (

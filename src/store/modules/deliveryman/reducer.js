@@ -5,24 +5,24 @@ const INITIAL_STATE = {
   loading: false,
 };
 
-export default function user(state = INITIAL_STATE, action) {
+export default function deliveryman(state = INITIAL_STATE, action) {
   return produce(state, (draft) => {
     switch (action.type) {
-      case '@user/UPDATE_PROFILE_REQUEST': {
+      case '@deliveryman/UPDATE_PROFILE_REQUEST': {
         draft.loading = true;
         break;
       }
-      case '@user/UPDATE_PROFILE_SUCCESS': {
+      case '@deliveryman/UPDATE_PROFILE_SUCCESS': {
         draft.profile = action.payload.profile;
         draft.loading = false;
         break;
       }
-      case '@user/UPDATE_PROFILE_FAILURE': {
+      case '@deliveryman/UPDATE_PROFILE_FAILURE': {
         draft.loading = false;
         break;
       }
       case '@auth/SIGN_IN_SUCCESS': {
-        draft.profile = action.payload.user;
+        draft.profile = action.payload.deliveryman;
         break;
       }
       case '@auth/SIGN_OUT': {

@@ -1,21 +1,14 @@
-export function signInRequest(email, password) {
+export function signInRequest(deliverymanId) {
   return {
     type: '@auth/SIGN_IN_REQUEST',
-    payload: { email, password },
+    payload: { deliverymanId },
   };
 }
 
-export function signInSuccess(token, user) {
+export function signInSuccess(deliveryman) {
   return {
     type: '@auth/SIGN_IN_SUCCESS',
-    payload: { token, user },
-  };
-}
-
-export function signUpRequest(name, email, password) {
-  return {
-    type: '@auth/SIGN_UP_REQUEST',
-    payload: { name, email, password },
+    payload: { deliveryman },
   };
 }
 
@@ -26,6 +19,7 @@ export function signFailure() {
 }
 
 export function signOut() {
+  console.tron.log('clicou');
   return {
     type: '@auth/SIGN_OUT',
   };

@@ -12,12 +12,12 @@ import { Container, Form, FormInput } from './styles';
 const SignIn = () => {
   const dispatch = useDispatch();
 
-  const [accountId, setAccountId] = useState('');
+  const [deliverymanId, setDeliverymanId] = useState('');
 
   const loading = useSelector((state) => state.auth.loading);
 
   function handleSubmit() {
-    dispatch(signInRequest(accountId));
+    dispatch(signInRequest(deliverymanId));
   }
 
   return (
@@ -30,7 +30,7 @@ const SignIn = () => {
             placeholder="Informe seu ID de cadastro"
             returnKeyType="send"
             onSubmitEditing={handleSubmit}
-            onChangeText={setAccountId}
+            onChangeText={setDeliverymanId}
           />
           <Button onPress={handleSubmit} loading={loading}>
             Entrar no sistema
