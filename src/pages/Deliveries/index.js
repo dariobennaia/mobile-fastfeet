@@ -4,6 +4,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { signOut } from '~/store/modules/auth/actions';
+import Avatar from '~/components/Avatar';
+import DefaultAvatar from '~/components/DefaultAvatar';
 
 import colors from '~/styles/colors';
 import List from './List';
@@ -14,14 +16,11 @@ import {
   Container,
   Header,
   Content,
-  Avatar,
   InfoContainer,
   Welcome,
   Name,
   SignOutContainer,
   SignOut,
-  AvatarNameContainer,
-  AvatarName,
 } from './styles';
 
 function Deliveries() {
@@ -29,9 +28,7 @@ function Deliveries() {
   const deliveryman = useSelector((state) => state.deliveryman.profile);
 
   const initials = useMemo(() => initialsName(deliveryman.name), [deliveryman]);
-  const deliverymanName = useMemo(() => toCapitalize(deliveryman.name, true), [
-    deliveryman,
-  ]);
+  const name = useMemo(() => toCapitalize(deliveryman.name), [deliveryman]);
 
   function handleSignOut() {
     Alert.alert(
@@ -46,15 +43,11 @@ function Deliveries() {
     <Container>
       <Header>
         {(deliveryman.avatar && (
-          <Avatar source={{ uri: deliveryman.avatar.url }} />
-        )) || (
-          <AvatarNameContainer>
-            <AvatarName>{initials}</AvatarName>
-          </AvatarNameContainer>
-        )}
+          <Avatar source={{ uri: deliveryman.avatar.url }} size={68} />
+        )) || <DefaultAvatar initials={initials} size={68} />}
         <InfoContainer>
           <Welcome>Bem vindo de volta,</Welcome>
-          <Name>{deliverymanName}</Name>
+          <Name>{name}</Name>
         </InfoContainer>
         <SignOutContainer>
           <SignOut onPress={handleSignOut}>

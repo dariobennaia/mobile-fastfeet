@@ -12,9 +12,13 @@ import colors from '~/styles/colors';
  */
 import SignIn from '~/pages/SignIn';
 import Deliveries from '~/pages/Deliveries';
+import Profile from '~/pages/Profile';
 
 const stackRoutes = [{ name: 'SignIn', component: SignIn }];
-const tabRoutes = [{ name: 'Deliveries', component: Deliveries }];
+const tabRoutes = [
+  { name: 'Deliveries', component: Deliveries },
+  { name: 'Profile', component: Profile },
+];
 
 /**
  * Configurações globais das tabs navigations.

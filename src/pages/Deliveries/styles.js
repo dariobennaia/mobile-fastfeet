@@ -5,18 +5,12 @@ import colors from '~/styles/colors';
 export const Container = styled.View`
   flex: 1;
   background: ${colors.background};
-  padding: 0 20px;
+  padding: 10px 20px 0 20px;
 `;
 
 export const Header = styled.View`
   flex-direction: row;
   padding: 0 20px 0 0;
-`;
-
-export const Avatar = styled.Image`
-  height: 68px;
-  width: 68px;
-  border-radius: 34px;
 `;
 
 export const InfoContainer = styled.View`
@@ -53,19 +47,4 @@ export const SignOutContainer = styled.View`
 export const Content = styled.View`
   margin-top: 20px;
   flex: 1;
-`;
-
-export const AvatarNameContainer = styled.View`
-  height: 68px;
-  width: 68px;
-  border-radius: 34px;
-  align-items: center;
-  justify-content: center;
-  background: ${colors.backgroundSecondary};
-`;
-
-export const AvatarName = styled.Text`
-  font-size: 32px;
-  text-transform: uppercase;
-  color: ${colors.secondary};
 `;

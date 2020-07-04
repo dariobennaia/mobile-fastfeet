@@ -1,11 +1,8 @@
-const toCapitalize = (string, all) => {
+const toCapitalize = (string) => {
   return string
     .split(' ')
-    .map((v, i) => {
-      if (all || (!all && i === 0)) {
-        return v[0].toUpperCase() + v.slice(1).toLowerCase();
-      }
-      return v.toLowerCase();
+    .map((v) => {
+      return v[0].toUpperCase() + v.slice(1).toLowerCase();
     })
     .join(' ');
 };
