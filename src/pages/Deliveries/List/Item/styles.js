@@ -46,7 +46,11 @@ export const FooterValue = styled.Text`
   opacity: 0.8;
 `;
 
-export const Details = styled.Text`
+export const Details = styled.TouchableOpacity`
+  height: 20px;
+`;
+
+export const DetailsTitle = styled.Text`
   font-size: 12px;
   color: ${colors.primary};
   font-weight: bold;

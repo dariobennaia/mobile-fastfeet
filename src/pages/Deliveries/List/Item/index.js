@@ -15,6 +15,7 @@ import {
   FooterTitle,
   FooterValue,
   Details,
+  DetailsTitle,
 } from './styles';
 
 function Item({ data, onShow }) {
@@ -41,7 +42,9 @@ function Item({ data, onShow }) {
           <FooterValue>{data.recipient && data.recipient.city}</FooterValue>
         </View>
 
-        <Details onPress={onShow}>Ver detalhes</Details>
+        <Details onPress={onShow}>
+          <DetailsTitle>Ver detalhes</DetailsTitle>
+        </Details>
       </Footer>
     </Container>
   );
