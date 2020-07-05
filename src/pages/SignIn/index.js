@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import Background from '~/components/Background';
+import Background from '~/components/BackgroundLogin';
 import { signInRequest } from '~/store/modules/auth/actions';
 import Button from '~/components/Button';
 

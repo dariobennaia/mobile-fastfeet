@@ -17,7 +17,7 @@ import {
   Details,
 } from './styles';
 
-function Item({ data }) {
+function Item({ data, onShow }) {
   return (
     <Container>
       <Header>
@@ -25,7 +25,10 @@ function Item({ data }) {
         <Title>{data.product}</Title>
       </Header>
       <Content>
-        <TimeLine currentStep={data.currentStep} hasProblem={data.canceledAt} />
+        <TimeLine
+          currentStep={data.currentStep.id}
+          hasProblem={!!data.canceledAt}
+        />
       </Content>
       <Footer>
         <View>
@@ -38,7 +41,7 @@ function Item({ data }) {
           <FooterValue>{data.recipient && data.recipient.city}</FooterValue>
         </View>
 
-        <Details>Ver detalhes</Details>
+        <Details onPress={onShow}>Ver detalhes</Details>
       </Footer>
     </Container>
   );
@@ -46,6 +49,7 @@ function Item({ data }) {
 
 Item.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
+  onShow: PropTypes.func.isRequired,
 };
 
 export default Item;

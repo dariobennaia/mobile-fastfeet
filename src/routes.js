@@ -40,7 +40,7 @@ const Tab = createBottomTabNavigator();
 export function AppRoutes() {
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor={colors.background} />
+      <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
       <NavigationContainer>
         <Tab.Navigator tabBarOptions={globalOptionsTab}>
           {tabRoutes.map(({ name, component }) => (

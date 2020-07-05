@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Alert } from 'react-native';
+import { Alert, StatusBar } from 'react-native';
 import { parseISO, format } from 'date-fns';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -10,6 +10,7 @@ import DefaultAvatar from '~/components/DefaultAvatar';
 
 import initialsName from '~/utils/initialsName';
 import toCapitalize from '~/utils/toCapitalize';
+import colors from '~/styles/colors';
 
 import {
   Container,
@@ -42,32 +43,35 @@ function Profile() {
   }
 
   return (
-    <Container>
-      <AvatarContainer>
-        {(deliveryman.avatar && (
-          <Avatar source={{ uri: deliveryman.avatar.url }} size={150} />
-        )) || <DefaultAvatar initials={initials} size={150} />}
-      </AvatarContainer>
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
+      <Container>
+        <AvatarContainer>
+          {(deliveryman.avatar && (
+            <Avatar source={{ uri: deliveryman.avatar.url }} size={150} />
+          )) || <DefaultAvatar initials={initials} size={150} />}
+        </AvatarContainer>
 
-      <InfoContainer>
-        <Info>
-          <Title>Nome completo</Title>
-          <Description>{name}</Description>
-        </Info>
+        <InfoContainer>
+          <Info>
+            <Title>Nome completo</Title>
+            <Description>{name}</Description>
+          </Info>
 
-        <Info>
-          <Title>Email</Title>
-          <Description>{deliveryman.email}</Description>
-        </Info>
+          <Info>
+            <Title>Email</Title>
+            <Description>{deliveryman.email}</Description>
+          </Info>
 
-        <Info>
-          <Title>Data de cadastro</Title>
-          <Description>{createdAt}</Description>
-        </Info>
-      </InfoContainer>
+          <Info>
+            <Title>Data de cadastro</Title>
+            <Description>{createdAt}</Description>
+          </Info>
+        </InfoContainer>
 
-      <SignOutButton onPress={handleSignOut}>Logout</SignOutButton>
-    </Container>
+        <SignOutButton onPress={handleSignOut}>Logout</SignOutButton>
+      </Container>
+    </>
   );
 }
 

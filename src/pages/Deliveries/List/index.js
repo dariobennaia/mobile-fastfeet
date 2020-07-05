@@ -1,119 +1,72 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useMemo } from 'react';
+import { Alert, StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Alert } from 'react-native';
-import { useSelector } from 'react-redux';
-import { parseISO, format } from 'date-fns';
 
-import api from '~/services/api';
-import Item from './Item';
+import { useSelector, useDispatch } from 'react-redux';
+import { signOut } from '~/store/modules/auth/actions';
+import Avatar from '~/components/Avatar';
+import DefaultAvatar from '~/components/DefaultAvatar';
+
 import colors from '~/styles/colors';
+import FlatList from './FlatList';
+import initialsName from '~/utils/initialsName';
+import toCapitalize from '~/utils/toCapitalize';
 
 import {
   Container,
   Header,
-  Title,
-  Actions,
-  Action,
-  ListDeliveries,
-  NoDataContainer,
-  NoDataTitle,
+  Content,
+  InfoContainer,
+  Welcome,
+  Name,
+  SignOutContainer,
+  SignOut,
 } from './styles';
 
-function List() {
+function Deliveries() {
+  const dispatch = useDispatch();
   const deliveryman = useSelector((state) => state.deliveryman.profile);
 
-  const [deliveries, setDeliveries] = useState([]);
-  const [currentStatus, setCurrentStatus] = useState('pending');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [refresh, setRefresh] = useState(false);
+  const initials = useMemo(() => initialsName(deliveryman.name), [deliveryman]);
+  const name = useMemo(() => toCapitalize(deliveryman.name), [deliveryman]);
 
-  function handleChangeStatus(status) {
-    setCurrentStatus(status);
-    setCurrentPage(1);
+  function handleSignOut() {
+    Alert.alert(
+      'Tem certeza?',
+      'Deseja realmente sair?',
+      [{ text: 'Não' }, { text: 'Sim', onPress: () => dispatch(signOut()) }],
+      { cancelable: false },
+    );
   }
-
-  async function handleShow(id) {}
-
-  function getCurrentStep(data) {
-    if (data.startDate && !data.endDate) return 2;
-    if (data.endDate) return 3;
-    return 1;
-  }
-
-  const loadDeliveries = useCallback(async () => {
-    try {
-      setRefresh(true);
-      const response = await api.get(
-        `/deliverymen/${deliveryman.id}/deliveries`,
-        {
-          params: {
-            status: currentStatus,
-            page: currentPage,
-          },
-        },
-      );
-
-      const data = response.data.map((v) => ({
-        ...v,
-        createdAtFormated: format(parseISO(v.createdAt), 'dd/MM/yyyy'),
-        currentStep: getCurrentStep(v),
-      }));
-
-      if (currentPage > 1) {
-        setDeliveries((oldValue) => [...oldValue, ...data]);
-        return;
-      }
-      setDeliveries(data);
-    } catch (err) {
-      Alert.alert('Ops!', 'Não foi possivel carregar as informações!');
-    } finally {
-      setRefresh(false);
-    }
-  }, [currentStatus, currentPage, deliveryman]);
-
-  useEffect(() => {
-    loadDeliveries();
-  }, [loadDeliveries]);
 
   return (
     <Container>
+      <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
       <Header>
-        <Title>Entregas</Title>
-        <Actions>
-          <Action
-            active={currentStatus === 'pending'}
-            onPress={() => handleChangeStatus('pending')}
-          >
-            Pendentes
-          </Action>
-          <Action
-            active={currentStatus === 'finished'}
-            onPress={() => handleChangeStatus('finished')}
-          >
-            Entregues
-          </Action>
-        </Actions>
+        {(deliveryman.avatar && (
+          <Avatar source={{ uri: deliveryman.avatar.url }} size={68} />
+        )) || <DefaultAvatar initials={initials} size={68} />}
+        <InfoContainer>
+          <Welcome>Bem vindo de volta,</Welcome>
+          <Name>{name}</Name>
+        </InfoContainer>
+        <SignOutContainer>
+          <SignOut onPress={handleSignOut}>
+            <Icon name="exit-to-app" size={22} color={colors.danger} />
+          </SignOut>
+        </SignOutContainer>
       </Header>
-      {(deliveries.length > 0 && (
-        <ListDeliveries
-          data={deliveries}
-          keyExtractor={(item) => String(item.id)}
-          refreshing={refresh}
-          onRefresh={() => setCurrentPage(1)}
-          onEndReached={() => setCurrentPage(currentPage + 1)}
-          onEndReachedThreshold={0.1}
-          renderItem={({ item }) => (
-            <Item onShow={() => handleShow(item.id)} data={item} />
-          )}
-        />
-      )) || (
-        <NoDataContainer>
-          <Icon name="local-shipping" size={72} color={colors.secondary} />
-          <NoDataTitle>Nenhuma entrega</NoDataTitle>
-        </NoDataContainer>
-      )}
+
+      <Content>
+        <FlatList />
+      </Content>
     </Container>
   );
 }
 
-export default List;
+Deliveries.navigationOptions = () => ({
+  title: 'Listagem',
+  headerShown: false,
+});
+
+export default Deliveries;
