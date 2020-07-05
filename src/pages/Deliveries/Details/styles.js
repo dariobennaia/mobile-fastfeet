@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components/native';
 import { ScrollView } from 'react-native';
 import colors from '~/styles/colors';
 
-export const Scroll = styled(ScrollView).attrs({
+export const Container = styled(ScrollView).attrs({
   showsVerticalScrollIndicator: false,
 })`
   align-self: stretch;

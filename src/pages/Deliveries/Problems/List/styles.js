@@ -1,6 +1,10 @@
 import styled from 'styled-components/native';
 import colors from '~/styles/colors';
 
+export const Container = styled.View`
+  align-self: stretch;
+`;
+
 export const Header = styled.View`
   align-self: stretch;
   align-items: center;

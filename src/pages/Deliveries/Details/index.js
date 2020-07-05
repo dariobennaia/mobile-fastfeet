@@ -10,7 +10,7 @@ import colors from '~/styles/colors';
 import api from '~/services/api';
 
 import {
-  Scroll,
+  Container,
   InfoTitle,
   InfoDescription,
   Row,
@@ -70,7 +70,7 @@ function Details({ navigation, route }) {
       return;
     }
 
-    if (delivery.startDate && !delivery.canceledAt) {
+    if (delivery.startDate && !delivery.canceledAt && !delivery.endDate) {
       handleFinishDelivery();
       return;
     }
@@ -87,7 +87,7 @@ function Details({ navigation, route }) {
     <>
       <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
       <Background>
-        <Scroll>
+        <Container>
           <Card
             title="Informações da entrega"
             icon="local-shipping"
@@ -151,7 +151,7 @@ function Details({ navigation, route }) {
               <TitleButtonOption>{actionDelivery}</TitleButtonOption>
             </Option>
           </OptionsContainer>
-        </Scroll>
+        </Container>
       </Background>
     </>
   );

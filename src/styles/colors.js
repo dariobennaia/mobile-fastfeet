@@ -16,4 +16,5 @@ export default {
   background: '#FFFFFF',
   backgroundSecondary: '#F4EFFC',
   shadow: '#00000026',
+  shadowSecondary: '#0000004D',
 };

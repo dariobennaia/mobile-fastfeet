@@ -6,7 +6,7 @@ import Background from '~/components/Background';
 import colors from '~/styles/colors';
 import api from '~/services/api';
 
-import { TextArea, SubmitButton, Scroll } from './styles';
+import { Container, TextArea, SubmitButton } from './styles';
 
 function Send({ navigation, route }) {
   const { id } = route.params;
@@ -43,7 +43,7 @@ function Send({ navigation, route }) {
     <>
       <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
       <Background>
-        <Scroll>
+        <Container>
           <TextArea
             autoCapitalize="none"
             underlineColorAndroid="transparent"
@@ -62,7 +62,7 @@ function Send({ navigation, route }) {
           >
             Enviar
           </SubmitButton>
-        </Scroll>
+        </Container>
       </Background>
     </>
   );

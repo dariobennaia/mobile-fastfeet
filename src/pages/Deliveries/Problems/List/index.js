@@ -7,6 +7,7 @@ import colors from '~/styles/colors';
 import api from '~/services/api';
 
 import {
+  Container,
   Header,
   Title,
   ListProblems,
@@ -42,28 +43,30 @@ function List({ route }) {
     <>
       <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
       <Background>
-        <Header>
-          <Title>
-            {problems.length > 0
-              ? `Encomenda ${problems[0].id}`
-              : 'Nenhum problema encontrado'}
-          </Title>
-        </Header>
-        <ListProblems
-          data={problems}
-          keyExtractor={(item) => String(item.id)}
-          renderItem={({ item }) => (
-            <Item>
-              <DescriptionContainer>
-                <Description>{item.description}</Description>
-              </DescriptionContainer>
+        <Container>
+          <Header>
+            <Title>
+              {problems.length > 0
+                ? `Encomenda ${problems[0].id}`
+                : 'Nenhum problema encontrado'}
+            </Title>
+          </Header>
+          <ListProblems
+            data={problems}
+            keyExtractor={(item) => String(item.id)}
+            renderItem={({ item }) => (
+              <Item>
+                <DescriptionContainer>
+                  <Description>{item.description}</Description>
+                </DescriptionContainer>
 
-              <DateContainer>
-                <Date>{item.createdAtFormated}</Date>
-              </DateContainer>
-            </Item>
-          )}
-        />
+                <DateContainer>
+                  <Date>{item.createdAtFormated}</Date>
+                </DateContainer>
+              </Item>
+            )}
+          />
+        </Container>
       </Background>
     </>
   );
