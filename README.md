@@ -21,13 +21,26 @@ Este é um projeto fictício feito para uma gestão de encomendas de uma transpo
 
 Esta é a 3/3 partes de um projeto como todo. O mesmo foi construído utilizando as tecnlologias mais populares de JavaScript e do mercado.
 
-Se você ainda não baixou as partes (1/3) ou (2/3), você encontrar elas abaixo, siga os passos para uma instalação correta:
+Se você ainda não baixou as partes (1/3) ou (2/3), você vai encontrar elas abaixo, siga os passos para uma instalação correta:
 - [(1/3) Api](https://github.com/dariobennaia/api-fastfeet)
-- [(2/3) Api](https://github.com/dariobennaia/web-fastfeet)
+- [(2/3) Web](https://github.com/dariobennaia/web-fastfeet)
 
 ## :camera: Preview
 
-![Farmers Market Finder Demo](./.github/preview.gif)
+<p align="center">
+  <img alt="Login" src=".github/login.jpeg" height="400px">
+  <img alt="Home" src=".github/home.jpeg" height="400px"/>
+  <img alt="Profile" src=".github/profile.jpeg" height="400px">
+  <img alt="Details" src=".github/details.jpeg" height="400px">
+</p>
+
+<br />
+
+<p align="center">
+  <img alt="Problem" src=".github/problems.jpeg" height="400px"/>
+  <img alt="Confirm1" src=".github/confirm2.jpeg" height="400px">
+  <img alt="Confirm2" src=".github/confirm1.jpeg" height="400px">
+</p>
 
 ## :pushpin: Funcionalidades
 
