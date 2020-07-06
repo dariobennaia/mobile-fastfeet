@@ -47,7 +47,9 @@ export const FooterValue = styled.Text`
 `;
 
 export const Details = styled.TouchableOpacity`
-  height: 20px;
+  height: 25px;
+  align-content: flex-end;
+  justify-content: flex-end;
 `;
 
 export const DetailsTitle = styled.Text`

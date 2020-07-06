@@ -60,7 +60,7 @@ function Confirm({ navigation, route }) {
             onPress={() => preview && !loading && handleFinishDelivery()}
             disabled={!preview || loading}
           >
-            Enviar
+            {loading ? 'Aguarde...' : 'Enviar'}
           </SubmitButton>
         </Container>
       </Background>
